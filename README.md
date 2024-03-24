@@ -5,14 +5,14 @@
 </p>
 
 <p align="center">
-    on your server. <a href="#how to install"><strong>Why?</strong></a>
+    on your server. <a href="#how-to-install"><strong>Why?</strong></a>
 </p>
 
 <p align="center">
-  <a href="#how to install"><strong>install</strong></a> ·
+  <a href="#how-to-install"><strong>install</strong></a> ·
   <a href="https://selfhostnext.com/docs"><strong>docs</strong></a> ·
   <a href="https://selfhostnext.com/changelog"><strong>changelog</strong></a> ·
-  <a href="https://selfhostnext.com/templates"><strong>examples</strong></a> ·
+  <a href="#nextjs-examples"><strong>examples</strong></a> ·
   <a href="https://selfhostnext.com/docs/cli"><strong>cli</strong></a>
 </p>
 
@@ -29,12 +29,12 @@ selfhostnext deploy         # publish
 
 ## Next.js Examples
 
-- [nextjs-cron-jobs - schedule](https://github.com/michaelwitk/selfhostnext/tree/main/examples/nextjs-cron-jobs)
-- [nextjs-mysql - database](https://github.com/michaelwitk/selfhostnext/tree/main/examples/nextjs-mysql)
-- [nextjs-redis - queues, rate limit, ...](https://github.com/michaelwitk/selfhostnext/tree/main/examples/nextjs-redis)
-- [nextjs-s3 - storage, images, videos, ...](https://github.com/michaelwitk/selfhostnext/tree/main/examples/nextjs-s3)
-- [nextjs-ws - websocket](https://github.com/michaelwitk/selfhostnext/tree/main/examples/nextjs-ws)
-- [nextjs-socket.io - websocket w/ cookie](https://github.com/michaelwitk/selfhostnext/tree/main/examples/nextjs-socket.io)
+- [nextjs-cron-jobs](https://github.com/michaelwitk/selfhostnext/tree/main/examples/nextjs-cron-jobs) - schedule
+- [nextjs-mysql](https://github.com/michaelwitk/selfhostnext/tree/main/examples/nextjs-mysql) - database
+- [nextjs-redis](https://github.com/michaelwitk/selfhostnext/tree/main/examples/nextjs-redis) - queues, rate limit, ...
+- [nextjs-s3](https://github.com/michaelwitk/selfhostnext/tree/main/examples/nextjs-s3) - storage, images, videos, ...
+- [nextjs-ws](https://github.com/michaelwitk/selfhostnext/tree/main/examples/nextjs-ws) - websocket
+- [nextjs-socket.io](https://github.com/michaelwitk/selfhostnext/tree/main/examples/nextjs-socket.io) - websocket w/ cookie
 
 ## How to Install
 
