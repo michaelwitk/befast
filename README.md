@@ -40,7 +40,7 @@ selfhostnext deploy         # publish
 
 [Watch the complete process on YouTube.com](https://youtube.com)
 
-1. **Pick a machine to host.** Select **Ubuntu LTS 22.04** as the operating system, and make sure at least **2GB/1CPU** is chosen. We recommend [DigitalOcean\*](https://cloud.digitalocean.com/droplets/new?i=182186&fleetUuid=05f9d4e2-246a-4157-b38a-9fc6ffa01356&distro=ubuntu&distroImage=ubuntu-22-04-x64&region=sfo3&size=s-1vcpu-2gb-amd) using the link provided you get $200 for the next 60 days for free. We personally use a 2GB/2CPU machine to host a few projects on a single machine.
+1. **Pick a machine to host.** Select **Ubuntu LTS 22.04** as the operating system, and make sure at least **2GB/1CPU** is chosen. We recommend [DigitalOcean\*](https://cloud.digitalocean.com/droplets/new?i=182186&fleetUuid=05f9d4e2-246a-4157-b38a-9fc6ffa01356&distro=ubuntu&distroImage=ubuntu-22-04-x64&region=sfo3&size=s-1vcpu-2gb-amd) using the link provided you get $200 for the next 60 days for free. We personally use a 2GB/2CPU machine to host a few projects on a single machine. hetzner.com, cloud.oracle.com are worth checking out too!
 2. **Point DNS to IP address of this machine.** Buy a domain (example.com) on [Namecheap](https://namecheap.com). Don't worry about SSL, it will be installed by selfhostnext. After purchase, click on **Manage**, then **Advanced DNS**, and enter **Host Records** as shown below. Replace 1.1.1.1 with your **machines IP address from step 1.**
 
 ```
