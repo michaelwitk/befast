@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-    on. your. server. <a href="#how to install"><strong>why?</strong></a>
+    on your server. <a href="#how to install"><strong>Why?</strong></a>
 </p>
 
 <p align="center">
@@ -19,15 +19,15 @@
 ![Discord](https://img.shields.io/discord/1221513687291003011)
 
 ```sh
-npm i -g selfhostnext       # cli
+npm i -g selfhostnext       # install cli
 
-selfhostnext init EXAMPLE   # new project?
+selfhostnext init EXAMPLE
 cd EXAMPLE
 
-selfhostnext deploy         # thats it!
+selfhostnext deploy         # publish
 ```
 
-## Next.js examples
+## Next.js Examples
 
 - [nextjs-cron-jobs - schedule](https://github.com/michaelwitk/selfhostnext/tree/main/examples/nextjs-cron-jobs)
 - [nextjs-mysql - database](https://github.com/michaelwitk/selfhostnext/tree/main/examples/nextjs-mysql)
@@ -36,9 +36,9 @@ selfhostnext deploy         # thats it!
 - [nextjs-ws - websocket](https://github.com/michaelwitk/selfhostnext/tree/main/examples/nextjs-ws)
 - [nextjs-socket.io - websocket w/ cookie](https://github.com/michaelwitk/selfhostnext/tree/main/examples/nextjs-socket.io)
 
-## how to install
+## How to Install
 
-[Watch the full process on YouTube.com](https://youtube.com)
+[Watch the complete process on YouTube.com](https://youtube.com)
 
 1. **Pick a machine to host.** Select **Ubuntu LTS 22.04** as the operating system, and make sure at least **2GB/1CPU** is chosen. We recommend [DigitalOcean\*](https://cloud.digitalocean.com/droplets/new?i=182186&fleetUuid=05f9d4e2-246a-4157-b38a-9fc6ffa01356&distro=ubuntu&distroImage=ubuntu-22-04-x64&region=sfo3&size=s-1vcpu-2gb-amd) using the link provided you get $200 for the next 60 days for free. We personally use a 2GB/2CPU machine to host a few projects on a single machine.
 2. **Point DNS to IP address of this machine.** Buy a domain (example.com) on [Namecheap](https://namecheap.com). Don't worry about SSL, it will be installed by selfhostnext. After purchase, click on **Manage**, then **Advanced DNS**, and enter **Host Records** as shown below. Replace 1.1.1.1 with your **machines IP address from step 1.**
@@ -55,15 +55,15 @@ A Record    *       1.1.1.1
 
 <img src="youtube.png" height="96">
 
-[Watch the full process on YouTube.com](https://youtube.com)
+[Watch the complete process on YouTube.com](https://youtube.com)
 
-## why?
+## Why?
 
-- same workflow you already love
-- no arbitrary limits
-- billing without surprises
-- not held hostage by a single provider
-- built in storage, one click start
-- better performance, data closer to code
-- private.
-- escape hatch. you too should have an exit strategy
+- Same workflow you already love.
+- No arbitrary limits.
+- Billing without surprises.
+- Not held hostage by a single provider.
+- Built-in storage, one-click start.
+- Better performance, data closer to code.
+- Private.
+- Escape hatch. You too should have an exit strategy.
