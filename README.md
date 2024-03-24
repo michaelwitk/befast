@@ -16,7 +16,7 @@
   <a href="https://selfhostnext.com/docs/cli"><strong>cli</strong></a>
 </p>
 
-![Discord](https://img.shields.io/discord/1221513687291003011)
+<a href="https://selfhostnext.com/discord"><img src="https://img.shields.io/discord/1221513687291003011?color=5865F2&logo=discord&logoColor=white" alt="Discord server" /></a>
 
 ```sh
 npm i -g selfhostnext       # install cli
