@@ -1,10 +1,14 @@
 import assert from 'assert'
 import util from 'util'
 import { exec as exec_raw } from 'child_process'
+import { pathExists } from 'fs-extra'
 
 const exec = util.promisify(exec_raw)
 
 export const git_selfhostnext = async (name) => {
+  assert(!(await pathExists(name)), 'clone destination already exists')
+  assert(!(await pathExists('tmp')), 'tmp destination already exists')
+
   assert(/^[a-z0-9-_]+$/.test(name), 'name can only include a-z0-9-_')
 
   await exec(
