@@ -1,17 +1,23 @@
-import { exec_raw } from 'child_process'
+import assert from 'assert'
+import util from 'util'
+import { exec as exec_raw } from 'child_process'
+
 const exec = util.promisify(exec_raw)
 
 export const git_selfhostnext = async (name) => {
-  console.log('git clone')
+  assert(/^[a-z0-9-_]+$/.test(name), 'name can only include a-z0-9-_')
+
   await exec(
-    `git clone --no-checkout https://github.com/michaelwitk/nextselfhost ${name}`
+    `git clone --no-checkout git@github.com:michaelwitk/selfhostnext.git ${name}`
   )
-  console.log('cd')
   await exec(`cd ${name}`)
-  console.log('git config')
-  await exec(`git config core.sparseCheckout true`)
-  console.log('echo')
-  await exec(`echo "/examples/${name}/*" >> .git/info/sparse-checkout`)
-  console.log('git checkout')
-  await exec(`git checkout main`)
+  await exec(`cd ${name} && git config core.sparseCheckout true`)
+  await exec(
+    `cd ${name} && echo "/examples/${name}/*" >> .git/info/sparse-checkout`
+  )
+  await exec(`cd ${name} && git checkout main`)
+
+  await exec(`mv ${name}/examples/${name} tmp`)
+  await exec(`rm -rf ${name}`)
+  await exec(`mv tmp ${name}`)
 }
