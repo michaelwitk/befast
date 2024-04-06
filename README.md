@@ -17,6 +17,8 @@
 </p>
 
 <a href="https://selfhostnext.com/discord"><img src="https://img.shields.io/discord/1221513687291003011?color=5865F2&logo=discord&logoColor=white" alt="Discord server" /></a>
+<a href="https://youtube.com/watch?v=dQw4w9WgXcQ"><img alt="YouTube Video Views" src="https://img.shields.io/youtube/views/dQw4w9WgXcQ">
+</a>
 
 ```sh
 npm i -g selfhostnext       # install cli
@@ -53,17 +55,17 @@ A Record    *       1.1.1.1
 3. **Connect a terminal to the machine.**
 4. **Install with one command.** Paste the command from your purchase, received via email, into the terminal on your server.
 
-<img src="youtube.png" height="96">
-
 [Watch the complete process on YouTube.com](https://youtube.com)
 
 ## Why?
 
 - Same workflow you already love.
+- No asterik on free\*
+- Drop in replacement. Keep your code as-is.
 - No arbitrary limits.
 - Billing without surprises.
-- Not held hostage by a single provider.
-- Built-in storage, one-click start.
+- The alternative you've been waiting for.
+- Built-in storage, one-click start, or defined in code.
 - Better performance, data closer to code.
 - Private.
 - Escape hatch. You too should have an exit strategy.
