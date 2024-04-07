@@ -49,8 +49,9 @@ if (command === 'login') {
   }
 
   console.log(
-    `Please visit the URL in your browser to confirm you are authorized. Will automatically grant access once completed.`
+    `Please visit the URL in your browser to confirm you are authorized. Will automatically grant access once completed. Refreshing every 5 seconds...`
   )
+  console.log()
   console.log(`${origin}${pathname}`)
 
   if (debug) console.log('waiting 5 seconds...')
@@ -58,16 +59,17 @@ if (command === 'login') {
 
   let apikey
   while (!apikey) {
-    let url = `${origin}/api/apikey/create?refresh=${refresh}`
-    console.log(url)
-    let res = await fetch(url)
-    assert(
-      res.ok,
-      `Could not create apikey. Ensure selfhostnext is setup on ${host}`
-    )
-    let data = await res.json()
-    console.log({ data })
-    apikey = data?.apikey
+    try {
+      let url = `${origin}/api/apikey/create?refresh=${refresh}`
+      console.log(url)
+      let res = await fetch(url)
+      assert(res.ok)
+      let data = await res.json()
+      console.log({ data })
+      apikey = data?.apikey
+    } catch (error) {
+      if (debug) console.error(error)
+    }
 
     if (debug) console.log('waiting 5 seconds...')
     if (!apikey) await new Promise((r) => setTimeout(r, 1000 * 5))
