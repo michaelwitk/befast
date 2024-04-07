@@ -125,13 +125,13 @@ if (command === 'deploy') {
   assert(res.ok)
   let json = await res.json()
   if (debug) console.log({ json })
-  const { git_name, repo } = json
+  const { owner, repo } = json
 
-  await git_deploy(git_name, repo)
+  await git_deploy(owner, repo)
 
   console.log('Success! Try adding a domain with `nextselfhost domain`')
   console.log()
-  console.log(`https://github.com/${git_name}/${repo}`)
+  console.log(`https://github.com/${owner}/${repo}`)
   console.log()
   console.log(`https://${host}/${repo}`)
 
