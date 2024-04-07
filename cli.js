@@ -1,6 +1,6 @@
 import assert from 'assert'
 import { config_read, config_write } from './cli/config'
-import { git_selfhostnext } from './git'
+import { git_deploy, git_selfhostnext } from './git'
 
 let [_node, _path, ...args] = process.argv
 
@@ -17,7 +17,7 @@ console.log({
 
 config_read()
 console.log(config_read())
-const { host } = config_read()
+const { host, apikey } = config_read()
 
 if (command === 'host') {
   let [host] = command_args
@@ -91,8 +91,49 @@ if (command === 'init') {
     console.log('Missing example. Run `selfhostnext init <name>`')
     console.log('where <name> is one of:')
     console.log(`demo`)
+    console.log(`static`)
     process.exit(1)
   }
 
   await git_selfhostnext(name)
+}
+
+if (command === 'deploy') {
+  let [name] = command_args
+
+  if (!name) {
+    let cwd = process.cwd()
+    if (debug) console.log({ cwd })
+    name = cwd.split('/').at(-1)
+    if (debug) console.log({ name })
+  }
+
+  assert(name, 'Missing example. Run `selfhostnext deploy <name>`')
+
+  let origin = `https://${host}`
+  let res = await fetch(`${origin}/api/deploy`, {
+    method: 'POST',
+    headers: {
+      'x-apikey': apikey,
+    },
+    body: JSON.stringify({
+      origin,
+      name,
+    }),
+  })
+
+  assert(res.ok)
+  let json = await res.json()
+  if (debug) console.log({ json })
+  const { git_name, repo } = json
+
+  await git_deploy(git_name, repo)
+
+  console.log('Success! Try adding a domain with `nextselfhost domain`')
+  console.log()
+  console.log(`https://github.com/${git_name}/${repo}`)
+  console.log()
+  console.log(`https://${host}/${repo}`)
+
+  process.exit(0)
 }

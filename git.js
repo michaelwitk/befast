@@ -25,3 +25,12 @@ export const git_selfhostnext = async (name) => {
   await exec(`rm -rf ${name}`)
   await exec(`mv tmp ${name}`)
 }
+
+export const git_deploy = async (name, repo) => {
+  await exec(`git init`)
+  await exec(`git add .`)
+  await exec(`git commit -m "first commit"`)
+  await exec(`git branch -M main`)
+  await exec(`git remote add origin git@github.com:${name}/${repo}.git`)
+  await exec(`git push -u origin main`)
+}

@@ -1,0 +1,10 @@
+{
+  "name": "static",
+  "scripts": {
+    "build": "",
+    "start": "serve"
+  },
+  "dependencies": {
+    "serve": "^14.2.1"
+  }
+}
