@@ -7,7 +7,7 @@
     "shn": "./dist/cli.js"
   },
   "scripts": {
-    "dev": "node --no-warnings --experimental-specifier-resolution=node src/cli",
+    "dev": "babel src -d dist && node dist/cli.js",
     "build": "babel src -d dist",
     "build:publish": "npm run build && npm publish"
   },
