@@ -1,14 +1,13 @@
 import assert from 'assert'
-import { config_read, config_write } from './cli/config'
+import { config_read, config_write } from './config'
 import { git_deploy, git_selfhostnext } from './git'
 
 let [_node, _path, ...args] = process.argv
 
 let [command, ...command_args] = args
 
-let debug = true
-// if (command_args.includes('--d') || command_args.includes('--debug'))
-//   debug = true
+let debug = process.env.DEBUG ?? ''
+debug = debug.split(',').includes('selfhost')
 
 console.log({
   command,
@@ -44,15 +43,14 @@ if (command === 'login') {
     let data = await res.json()
     if (debug) console.log({ data })
 
+    const { code } = data
     refresh = data.refresh
     pathname = data.pathname
+    console.log(`Your code should read: ${code}`)
+    console.log(`Please confirm on the following page:`)
+    console.log()
+    console.log(`${origin}${pathname}`)
   }
-
-  console.log(
-    `Please visit the URL in your browser to confirm you are authorized. Will automatically grant access once completed. Refreshing every 5 seconds...`
-  )
-  console.log()
-  console.log(`${origin}${pathname}`)
 
   if (debug) console.log('waiting 5 seconds...')
   if (!debug) await new Promise((r) => setTimeout(r, 1000 * 5))
@@ -61,7 +59,7 @@ if (command === 'login') {
   while (!apikey) {
     try {
       let url = `${origin}/api/apikey/create?refresh=${refresh}`
-      console.log(url)
+      if (debug) console.log(url)
       let res = await fetch(url)
       assert(res.ok)
       let data = await res.json()
