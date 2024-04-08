@@ -18,7 +18,8 @@ const main = async () => {
   })
 
   config_read()
-  console.log(config_read())
+  if (debug) console.log(config_read())
+
   const { host, apikey } = config_read()
 
   if (command === 'host') {
@@ -118,7 +119,7 @@ const main = async () => {
         'x-apikey': apikey,
       },
       body: JSON.stringify({
-        origin,
+        host,
         name,
       }),
     })
