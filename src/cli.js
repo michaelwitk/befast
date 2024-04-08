@@ -121,7 +121,9 @@ const main = async () => {
     console.log(chalk.gray(`${name} created.`))
     console.log(chalk.gray(`You can deploy ${chalk.bold(name)} in two steps:`))
     console.log(chalk.cyan.bold(`cd ${name}`))
-    console.log(chalk.cyan.bold(`selfhostnext deploy ${chalk.gray('rename')}`))
+    console.log(
+      `${chalk.cyan.bold('selfhostnext deploy')} ${chalk.gray('[rename]')}`
+    )
   }
 
   if (command === 'deploy') {
@@ -154,21 +156,17 @@ const main = async () => {
     )
     let json = await res.json()
     if (debug) console.log({ json })
-    const { owner, repo } = json
+    const { owner, repo, domain } = json
 
     await git_deploy(owner, repo)
 
-    console.log(
-      chalk.gray(
-        `Success! Try adding a domain with ${chalk.cyan.bold(
-          'nextselfhost domain'
-        )}`
-      )
-    )
+    console.log(chalk.gray(`Success!`))
     console.log()
-    console.log(chalk.cyan.bold(`https://github.com/${owner}/${repo}`))
+    console.log(chalk.gray(`https://github.com/${owner}/${repo}`))
     console.log()
-    console.log(chalk.cyan.bold(`https://${host}/${repo}`))
+    console.log(chalk.gray(`https://${host}/${repo}`))
+    console.log()
+    console.log(chalk.cyan.bold(`https://${domain}`))
 
     process.exit(0)
   }
