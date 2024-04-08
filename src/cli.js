@@ -1,8 +1,17 @@
 #!/usr/bin/env node
 
 import assert from 'assert'
+import chalk from 'chalk'
+
 import { config_read, config_write } from './config'
 import { git_deploy, git_selfhostnext } from './git'
+
+const assert_chalk = (condition, message) => {
+  if (!condition) {
+    console.log(chalk.red(message))
+    process.exit(1)
+  }
+}
 
 const main = async () => {
   let [_node, _path, ...args] = process.argv
@@ -12,36 +21,38 @@ const main = async () => {
   let debug = process.env.DEBUG ?? ''
   debug = debug.split(',').includes('selfhost')
 
-  console.log({
-    command,
-    command_args,
-  })
+  if (debug)
+    console.log({
+      command,
+      command_args,
+    })
 
   config_read()
   if (debug) console.log(config_read())
 
   const { host, apikey } = config_read()
 
-  if (command === 'host') {
-    let [host] = command_args
-    console.log(host)
-  }
-
   if (command === 'login') {
     let [host, refresh] = command_args
     let pathname
-    console.log('login', host)
 
-    assert(host, 'Missing domain. Run `selfhostnext login <url>`')
+    assert_chalk(
+      host,
+      chalk.red(
+        `Missing host. Run ${chalk.cyan.bold(`selfhostnext login [host]`)}`
+      )
+    )
 
     let origin = `https://${host}`
     if (!refresh) {
       let res = await fetch(`${origin}/api/apikey/create`, {
         method: 'POST',
       })
-      assert(
+      assert_chalk(
         res.ok,
-        `Could not create apikey. Ensure selfhostnext is setup on ${host}`
+        `Could not create apikey. Ensure Selfhostnext is setup on host ${chalk.gray(
+          host
+        )}`
       )
 
       let data = await res.json()
@@ -50,10 +61,10 @@ const main = async () => {
       const { code } = data
       refresh = data.refresh
       pathname = data.pathname
-      console.log(`Your code should read: ${code}`)
-      console.log(`Please confirm on the following page:`)
+      console.log(chalk.gray(`Your code should read: ${code}`))
+      console.log(chalk.gray(`Please visit following page to confirm:`))
       console.log()
-      console.log(`${origin}${pathname}`)
+      console.log(chalk.cyan.bold(`${origin}${pathname}`))
     }
 
     if (debug) console.log('waiting 5 seconds...')
@@ -78,26 +89,39 @@ const main = async () => {
     }
 
     config_write({ host, apikey })
-    console.log(`${host} successfully configured.`)
+    console.log(chalk.gray(`${chalk.bold(host)} successfully configured.`))
     process.exit(0)
   }
 
-  assert(host, 'Missing domain. Run `selfhostnext login <url>`')
-  console.log('host configured')
+  assert(
+    host,
+    `Missing host. Run ${chalk.cyan.bold('selfhostnext login [host]')}`
+  )
+  if (debug) console.log('host configured')
 
   if (command === 'init') {
     let [name] = command_args
     try {
       assert(name)
     } catch (error) {
-      console.log('Missing example. Run `selfhostnext init <name>`')
-      console.log('where <name> is one of:')
-      console.log(`demo`)
-      console.log(`static`)
+      console.log(
+        chalk.red(
+          `Missing example. Run ${chalk.cyan.bold(
+            `selfhostnext init ${chalk.green.bold('[name]')}`
+          )}`
+        )
+      )
+      console.log(chalk.gray('where [name] is one of:'))
+      console.log(chalk.green.bold(`demo`))
+      console.log(chalk.green.bold(`static`))
       process.exit(1)
     }
 
     await git_selfhostnext(name)
+    console.log(chalk.gray(`${name} created.`))
+    console.log(chalk.gray(`You can deploy ${chalk.bold(name)} in two steps:`))
+    console.log(chalk.cyan.bold(`cd ${name}`))
+    console.log(chalk.cyan.bold(`selfhostnext deploy ${chalk.gray('rename')}`))
   }
 
   if (command === 'deploy') {
@@ -110,7 +134,7 @@ const main = async () => {
       if (debug) console.log({ name })
     }
 
-    assert(name, 'Missing example. Run `selfhostnext deploy <name>`')
+    assert_chalk(name, 'Missing name')
 
     let origin = `https://${host}`
     let res = await fetch(`${origin}/api/deploy`, {
@@ -124,18 +148,27 @@ const main = async () => {
       }),
     })
 
-    assert(res.ok)
+    assert_chalk(
+      res.ok,
+      `Ensure Selfhostnext is setup on host ${chalk.gray(host)}`
+    )
     let json = await res.json()
     if (debug) console.log({ json })
     const { owner, repo } = json
 
     await git_deploy(owner, repo)
 
-    console.log('Success! Try adding a domain with `nextselfhost domain`')
+    console.log(
+      chalk.gray(
+        `Success! Try adding a domain with ${chalk.cyan.bold(
+          'nextselfhost domain'
+        )}`
+      )
+    )
     console.log()
-    console.log(`https://github.com/${owner}/${repo}`)
+    console.log(chalk.cyan.bold(`https://github.com/${owner}/${repo}`))
     console.log()
-    console.log(`https://${host}/${repo}`)
+    console.log(chalk.cyan.bold(`https://${host}/${repo}`))
 
     process.exit(0)
   }

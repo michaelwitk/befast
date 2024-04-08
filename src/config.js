@@ -6,7 +6,6 @@ const { readJSONSync, writeJSONSync, ensureFileSync } = fse
 
 export const config_path_get = () => {
   const dirs = XDGAppPaths('com.selfhostnext.cli').dataDirs()
-  // console.log(dirs)
   return dirs[0]
 }
 
