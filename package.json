@@ -1,11 +1,14 @@
 {
   "name": "selfhostnext",
-  "version": "0.0.13",
+  "version": "0.0.15",
   "description": "The command-line interface for Selfhostnext",
   "bin": {
     "selfhostnext": "./dist/cli.js",
     "shn": "./dist/cli.js"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "babel src -d dist && node dist/cli.js",
     "build": "babel src -d dist",
