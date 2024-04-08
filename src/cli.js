@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import assert from 'assert'
 import { config_read, config_write } from './config'
 import { git_deploy, git_selfhostnext } from './git'
