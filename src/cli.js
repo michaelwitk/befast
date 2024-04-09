@@ -4,7 +4,7 @@ import assert from 'assert'
 import chalk from 'chalk'
 
 import { config_read, config_write } from './config'
-import { git_deploy, git_selfhostnext } from './git'
+import { git_deploy, git_clone_befast } from './git'
 
 const assert_chalk = (condition, message) => {
   if (!condition) {
@@ -19,7 +19,7 @@ const main = async () => {
   let [command, ...command_args] = args
 
   let debug = process.env.DEBUG ?? ''
-  debug = debug.split(',').includes('selfhost')
+  debug = debug.split(',').includes('befast')
 
   if (debug)
     console.log({
@@ -38,9 +38,7 @@ const main = async () => {
 
     assert_chalk(
       host,
-      chalk.red(
-        `Missing host. Run ${chalk.cyan.bold(`selfhostnext login [host]`)}`
-      )
+      chalk.red(`Missing host. Run ${chalk.cyan.bold(`befast login [host]`)}`)
     )
 
     let origin = `https://${host}`
@@ -50,7 +48,7 @@ const main = async () => {
       })
       assert_chalk(
         res.ok,
-        `Could not create apikey. Ensure Selfhostnext is setup on host ${chalk.gray(
+        `Could not create apikey. Ensure BeFast is setup on host ${chalk.gray(
           host
         )}`
       )
@@ -93,10 +91,7 @@ const main = async () => {
     process.exit(0)
   }
 
-  assert(
-    host,
-    `Missing host. Run ${chalk.cyan.bold('selfhostnext login [host]')}`
-  )
+  assert(host, `Missing host. Run ${chalk.cyan.bold('befast login [host]')}`)
   if (debug) console.log('host configured')
 
   if (command === 'init') {
@@ -107,7 +102,7 @@ const main = async () => {
       console.log(
         chalk.red(
           `Missing example. Run ${chalk.cyan.bold(
-            `selfhostnext init ${chalk.green.bold('[name]')}`
+            `befast init ${chalk.green.bold('[name]')}`
           )}`
         )
       )
@@ -117,13 +112,11 @@ const main = async () => {
       process.exit(1)
     }
 
-    await git_selfhostnext(name)
+    await git_clone_befast(name)
     console.log(chalk.gray(`${name} created.`))
     console.log(chalk.gray(`You can deploy ${chalk.bold(name)} in two steps:`))
     console.log(chalk.cyan.bold(`cd ${name}`))
-    console.log(
-      `${chalk.cyan.bold('selfhostnext deploy')} ${chalk.gray('[rename]')}`
-    )
+    console.log(`${chalk.cyan.bold('befast deploy')} ${chalk.gray('[rename]')}`)
   }
 
   if (command === 'deploy') {
@@ -150,10 +143,7 @@ const main = async () => {
       }),
     })
 
-    assert_chalk(
-      res.ok,
-      `Ensure Selfhostnext is setup on host ${chalk.gray(host)}`
-    )
+    assert_chalk(res.ok, `Ensure BeFast is setup on host ${chalk.gray(host)}`)
     let json = await res.json()
     if (debug) console.log({ json })
     const { owner, repo, domain } = json

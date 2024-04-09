@@ -5,14 +5,14 @@ import { pathExists } from 'fs-extra'
 
 const exec = util.promisify(exec_raw)
 
-export const git_selfhostnext = async (name) => {
+export const git_clone_befast = async (name) => {
   assert(/^[a-z0-9-_]+$/.test(name), 'name can only include a-z0-9-_')
 
   assert(!(await pathExists(name)), 'clone destination already exists')
   assert(!(await pathExists('tmp')), 'tmp destination already exists')
 
   await exec(
-    `git clone --no-checkout git@github.com:michaelwitk/selfhostnext.git ${name}`
+    `git clone --no-checkout git@github.com:michaelwitk/befast.git ${name}`
   )
   await exec(`cd ${name}`)
   await exec(`cd ${name} && git config core.sparseCheckout true`)

@@ -5,7 +5,7 @@ import fse from 'fs-extra'
 const { readJSONSync, writeJSONSync, ensureFileSync } = fse
 
 export const config_path_get = () => {
-  const dirs = XDGAppPaths('com.selfhostnext.cli').dataDirs()
+  const dirs = XDGAppPaths('com.befast.cli').dataDirs()
   return dirs[0]
 }
 

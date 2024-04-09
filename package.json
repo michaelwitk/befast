@@ -1,10 +1,10 @@
 {
   "name": "befast",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "The command-line interface for Befa.st",
   "bin": {
-    "selfhostnext": "./dist/cli.js",
-    "shn": "./dist/cli.js"
+    "bf": "./dist/cli.js",
+    "befast": "./dist/cli.js"
   },
   "files": [
     "dist"
