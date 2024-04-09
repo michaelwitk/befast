@@ -49,6 +49,7 @@ const main = async () => {
   }
 
   if (command === 'compose') {
+    await dotenv_example()
     await docker_compose_up()
     process.exit(0)
   }
