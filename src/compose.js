@@ -2,6 +2,13 @@ import { ensureFile, readdir, readFile, writeFile } from 'fs-extra'
 
 import { exec } from './libs/exec'
 
+export const docker_version = async () => {
+  let { stdout } = await exec(`docker version --format json`)
+  stdout = JSON.parse(stdout)
+  // stdout.Version
+  return stdout
+}
+
 export const dotenv_example = async () => {
   await ensureFile(`./.env`)
   await ensureFile(`./.env.example`)
@@ -47,5 +54,13 @@ export const docker_compose = async (file, file_env, up = 'up -d --wait') => {
     file_env,
     up,
   })
+
+  try {
+    await exec(`docker network create befast-compose-shared`)
+  } catch (error) {
+    console.error(error)
+    // TODO: check error message
+    // already created
+  }
   await exec(`docker compose -f ${file} --env-file ${file_env} ${up}`)
 }

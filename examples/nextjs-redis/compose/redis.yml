@@ -8,12 +8,12 @@ services:
       - 6379:6379
     command: redis-server --save 20 1 --loglevel warning --requirepass ${BEFAST_PASSWORD}
     volumes:
-      - nextjs_redisdata:/data
+      - nextjs_redis_data:/data
 
 volumes:
-  nextjs_redisdata:
+  nextjs_redis_data:
 
 networks:
   default:
-    name: compose-shared
+    name: befast-compose-shared
     external: true
