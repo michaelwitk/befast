@@ -49,19 +49,18 @@ export const docker_compose_up = async (up) => {
 }
 
 export const docker_network_create = async (name) => {
-  console.log('here1')
   try {
     await exec(`docker network create ${name}`)
   } catch (error) {
-    console.error(error)
-    console.error('error.stderr')
-    console.error(error.stderr)
+    if (
+      stderr.stderr.startsWith(
+        `Error response from daemon: network with name ${name} already exists`
+      )
+    )
+      return
 
-    // if(error)
+    throw error
   }
-  //  if (stderr.stderr.startsWith(`Error: Command failed: docker network create`))
-
-  console.log('here2')
 }
 
 let default_docker_network = `befast-compose-shared`
