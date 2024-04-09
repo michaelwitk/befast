@@ -53,7 +53,7 @@ export const docker_network_create = async (name) => {
     await exec(`docker network create ${name}`)
   } catch (error) {
     if (
-      stderr.stderr.startsWith(
+      error.stderr.startsWith(
         `Error response from daemon: network with name ${name} already exists`
       )
     )
