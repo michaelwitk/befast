@@ -5,6 +5,7 @@ import chalk from 'chalk'
 
 import { config_read, config_write } from './config'
 import { git_deploy, git_clone_befast } from './git'
+import { docker_compose_up } from './compose'
 
 const assert_chalk = (condition, message) => {
   if (!condition) {
@@ -36,6 +37,16 @@ const main = async () => {
   if (debug) console.log(config_read())
 
   const { host, apikey } = config_read()
+
+  if (command === 'cwd') {
+    console.log(process.cwd())
+    process.exit(0)
+  }
+
+  if (command === 'compose') {
+    await docker_compose_up()
+    process.exit(0)
+  }
 
   if (command === 'login') {
     let [host, refresh] = command_args
