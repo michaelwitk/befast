@@ -1,5 +1,7 @@
 import { ensureFile, readdir, readFile, writeFile } from 'fs-extra'
 
+import { exec } from './libs/exec'
+
 export const dotenv_example = async () => {
   await ensureFile(`./.env`)
   await ensureFile(`./.env.example`)

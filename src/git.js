@@ -1,9 +1,7 @@
 import assert from 'assert'
-import util from 'util'
-import { exec as exec_raw } from 'child_process'
 import { pathExists } from 'fs-extra'
 
-const exec = util.promisify(exec_raw)
+import { exec } from './libs/exec'
 
 export const git_clone_befast = async (name) => {
   assert(/^[a-z0-9-_]+$/.test(name), 'name can only include a-z0-9-_')
