@@ -18,7 +18,7 @@ const main = async () => {
 
   let [command, ...command_args] = args
 
-  if (command === 'version') {
+  if (command === 'version' || command === 'v') {
     console.log(require('../package.json').version)
     process.exit(0)
   }
