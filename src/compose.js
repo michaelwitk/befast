@@ -48,19 +48,26 @@ export const docker_compose_up = async (up) => {
   }
 }
 
+export const docker_network_create = async (name) => {
+  console.log('here1')
+  try {
+    await exec(`docker network create ${name}`)
+  } catch (error) {
+    console.error(error)
+    // if(error)
+  }
+  //  if (stderr.stderr.startsWith(`Error: Command failed: docker network create`))
+  console.log('here2')
+}
+
+let default_docker_network = `befast-compose-shared`
 export const docker_compose = async (file, file_env, up = 'up -d --wait') => {
   console.log({
     file,
     file_env,
     up,
   })
+  await docker_network_create(default_docker_network)
 
-  try {
-    await exec(`docker network create befast-compose-shared`)
-  } catch (error) {
-    console.error(error)
-    // TODO: check error message
-    // already created
-  }
   await exec(`docker compose -f ${file} --env-file ${file_env} ${up}`)
 }

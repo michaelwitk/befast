@@ -1,7 +1,7 @@
 version: '3.1'
 
 services:
-  redis-isolated:
+  redis:
     image: redis:6.2-alpine
     restart: always
     ports:
