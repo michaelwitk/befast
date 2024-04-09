@@ -152,7 +152,7 @@ const main = async () => {
     assert_chalk(res.ok, `Ensure BeFast is setup on host ${chalk.gray(host)}`)
     let json = await res.json()
     if (debug) console.log({ json })
-    const { owner, repo, domain, build } = json
+    const { owner, repo, domain } = json
 
     await git_deploy(owner, repo)
 
@@ -160,9 +160,6 @@ const main = async () => {
     console.log(chalk.gray(`https://${host}/${repo}`))
     console.log(chalk.gray(`https://${domain}`))
 
-    console.log()
-    console.log(chalk.gray(`You can follow the build process at`))
-    console.log(chalk.cyan.bold(build))
     process.exit(0)
   }
 }
