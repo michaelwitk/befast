@@ -5,7 +5,7 @@ import chalk from 'chalk'
 
 import { config_read, config_write } from './config'
 import { git_deploy, git_clone_befast } from './git'
-import { docker_compose_up } from './compose'
+import { docker_compose_up, dotenv_example } from './compose'
 
 const assert_chalk = (condition, message) => {
   if (!condition) {
@@ -40,6 +40,11 @@ const main = async () => {
 
   if (command === 'cwd') {
     console.log(process.cwd())
+    process.exit(0)
+  }
+
+  if (command === 'dotenv_example') {
+    await dotenv_example()
     process.exit(0)
   }
 

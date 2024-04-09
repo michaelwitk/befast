@@ -1,8 +1,11 @@
 node_modules
 dist
 
+.env
+.env*.local
+
 # examples
 demo
-static
 !*/demo/
+static
 !*/static/
