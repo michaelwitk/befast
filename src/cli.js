@@ -155,6 +155,7 @@ const main = async () => {
     console.log(chalk.gray(`https://${host}/${repo}`))
     console.log(chalk.gray(`https://${domain}`))
 
+    console.log()
     console.log(chalk.gray(`You can follow the build process at`))
     console.log(chalk.cyan.bold(build))
     process.exit(0)
