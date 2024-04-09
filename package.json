@@ -1,6 +1,6 @@
 {
   "name": "befast",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "The command-line interface for Befa.st",
   "bin": {
     "bf": "./dist/cli.js",
@@ -23,15 +23,20 @@
     "url": "https://github.com/michaelwitk/befast.git"
   },
   "keywords": [
+    "befast",
     "selfhost",
     "self",
     "host",
     "next",
     "nextjs",
+    "vercel",
     "netlify",
     "vps",
     "server",
-    "heroku"
+    "heroku",
+    "deploy",
+    "ssr",
+    "static"
   ],
   "author": "michaelwitk",
   "license": "MIT",
