@@ -18,6 +18,11 @@ const main = async () => {
 
   let [command, ...command_args] = args
 
+  if (command === 'version') {
+    console.log(require('../package.json').version)
+    process.exit(0)
+  }
+
   let debug = process.env.DEBUG ?? ''
   debug = debug.split(',').includes('befast')
 
