@@ -76,7 +76,8 @@ const main = async () => {
         let res = await fetch(url)
         assert(res.ok)
         let data = await res.json()
-        console.log({ data })
+        if (debug) console.log({ data })
+
         apikey = data?.apikey
       } catch (error) {
         if (debug) console.error(error)

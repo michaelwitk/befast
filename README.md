@@ -1,5 +1,6 @@
 <p align="center">
     <a href="https://befa.st">
+        <img src="https://assets.vercel.com/image/upload/v1588805858/repositories/vercel/logo.png" height="96">
         <h3 align="center">BeFast</h3>
     </a>
 </p>
@@ -60,7 +61,8 @@ A Record    *       1.1.1.1
 ## Why?
 
 - Same workflow you already love. Pretty UI, working CLI.
-- No asterik on free\*
+- No need to sign up on 50 different sites to get your database, queue, rate limiting...
+- No hidden asterik on free\*
 - Drop in replacement. Keep your code as-is.
 - No arbitrary limits.
 - Billing without surprises.
@@ -68,4 +70,4 @@ A Record    *       1.1.1.1
 - Built-in storage, one-click start.
 - Better performance, data closer to code.
 - Private.
-- Escape hatch. Have an exit strategy once a company changes their mind on pricing on the fly.
+- Escape hatch. Have an exit strategy once a company changes pricing on the fly.
