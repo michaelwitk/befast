@@ -54,9 +54,13 @@ export const docker_network_create = async (name) => {
     await exec(`docker network create ${name}`)
   } catch (error) {
     console.error(error)
+    console.error('error.stderr')
+    console.error(error.stderr)
+
     // if(error)
   }
   //  if (stderr.stderr.startsWith(`Error: Command failed: docker network create`))
+
   console.log('here2')
 }
 
