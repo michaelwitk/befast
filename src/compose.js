@@ -57,14 +57,21 @@ export const docker_compose_up = async (up) => {
         console.log()
         console.log(
           chalk.gray(
-            'Port already in use. Please shutdown the other process and try again'
+            'Port already in use. Recommended action: shutdown the other process and try again'
           )
         )
         console.log(
           chalk.gray(
-            `Try to run ${chalk.cyan.bold(
-              'docker ps -a'
-            )} and ${chalk.cyan.bold('docker stop [container_id]')}`
+            `This is most likely because you didn't run ${chalk.cyan.bold(
+              'befast down'
+            )} on the last example.`
+          )
+        )
+        console.log(
+          chalk.gray(
+            `Try to run ${chalk.cyan.bold('docker ps')} and ${chalk.cyan.bold(
+              'docker stop [container_id]'
+            )}`
           )
         )
       }
