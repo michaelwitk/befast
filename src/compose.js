@@ -46,7 +46,6 @@ export const docker_compose_up = async (up) => {
     try {
       await docker_compose(file, file_env, up)
     } catch (error) {
-      console.log(error)
       console.log(chalk.red.bold(`${_file}`))
       console.log(chalk.red(error.stderr))
 
@@ -54,24 +53,23 @@ export const docker_compose_up = async (up) => {
         'failed: port is already allocated'
       )
       if (port_solution) {
-        console.log()
         console.log(
           chalk.gray(
-            'Port already in use. Recommended action: shutdown the other process and try again'
+            'Recommended action: shutdown other process and try again.'
           )
         )
         console.log(
           chalk.gray(
             `This is most likely because you didn't run ${chalk.cyan.bold(
               'befast down'
-            )} on the last example.`
+            )} in the last example directory.`
           )
         )
         console.log(
           chalk.gray(
-            `Try to run ${chalk.cyan.bold('docker ps')} and ${chalk.cyan.bold(
-              'docker stop [container_id]'
-            )}`
+            `Alternatively you can run ${chalk.cyan.bold(
+              'docker ps'
+            )} and ${chalk.cyan.bold('docker stop [id]')}`
           )
         )
       }
