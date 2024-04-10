@@ -69,7 +69,7 @@ export const docker_compose_up = async (up) => {
           chalk.gray(
             `Alternatively you can run ${chalk.cyan.bold(
               'docker ps'
-            )} and ${chalk.cyan.bold('docker stop [id]')}`
+            )} and ${chalk.cyan.bold('docker stop [container_id]')}`
           )
         )
       }
