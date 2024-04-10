@@ -1,0 +1,21 @@
+version: '3.1'
+
+services:
+  mysql:
+    image: mysql
+    command: --lower_case_table_names=1
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${BEFAST_PASSWORD}
+    ports:
+      - 3306:3306
+    volumes:
+      - nextjs_mysql_data:/var/lib/mysql
+
+volumes:
+  nextjs_mysql_data:
+
+networks:
+  default:
+    name: befast-compose-shared
+    external: true

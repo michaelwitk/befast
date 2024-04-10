@@ -2,12 +2,17 @@
 
 import assert from 'assert'
 
-import open from 'open'
 import chalk from 'chalk'
 
 import { config_read, config_write } from './config'
 import { git_deploy, git_clone_befast } from './git'
 import { docker_compose_up, dotenv_example } from './compose'
+
+const open = async (...args) => {
+  let open = await import('open')
+  open = open.default()
+  await open(...args)
+}
 
 const assert_chalk = (condition, message) => {
   if (!condition) {

@@ -15,19 +15,22 @@ export const dotenv_example = async () => {
   await ensureFile(`./.env.example`)
 
   let dotenv = await readFile(`./.env`, 'utf8')
-  let split = dotenv.split('\n')
+  let prev = dotenv.split('\n')
 
   let dotenv_example = await readFile(`./.env.example`, 'utf8')
   let missing = dotenv_example.split('\n')
   missing = missing.filter((line) => {
     const [key] = line.split('=')
-    let found = split.some((line) => line.startsWith(`${key}=`))
+    let found = prev.some((line) => line.startsWith(`${key}=`))
     if (found) return
 
     return true
   })
 
-  let prev = [...split]
+  console.log('missing')
+  console.log(missing)
+
+  prev = [...split]
   if (missing.length > 0)
     prev = [...prev, `# BeFast added missed variables:`, ...missing]
 
