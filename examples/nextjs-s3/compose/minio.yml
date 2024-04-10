@@ -1,0 +1,34 @@
+version: '3.1'
+
+services:
+  minio:
+    image: minio/minio
+    ports:
+      - '9000:9000'
+      - '9001:9001'
+    volumes:
+      - minio_data:/data
+    environment:
+      MINIO_ROOT_USER: ${BEFAST_PASSWORD}
+      MINIO_ROOT_PASSWORD: ${BEFAST_PASSWORD}
+    command: server --console-address ":9001" /data
+
+  _minio_default_public:
+    image: minio/mc
+    depends_on:
+      - minio
+    entrypoint: >
+      /bin/sh -c "
+      /usr/bin/mc alias set default http://minio:9000 ${BEFAST_PASSWORD} ${BEFAST_PASSWORD};
+      /usr/bin/mc mb default/public;
+      /usr/bin/mc anonymous set public default/public;
+      exit 0;
+      "
+
+volumes:
+  minio_data:
+
+networks:
+  default:
+    name: befast-compose-shared
+    external: true

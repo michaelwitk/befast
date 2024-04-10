@@ -18,7 +18,9 @@ export const dotenv_example = async () => {
   let prev = dotenv.split('\n')
 
   let dotenv_example = await readFile(`./.env.example`, 'utf8')
-  let missing = dotenv_example.split('\n')
+  let missing = dotenv_example
+    .split('\n')
+    .filter((line) => !line.trim().startsWith('#') && line.includes('='))
   missing = missing
     .filter((line) => {
       const [key] = line.split('=')
