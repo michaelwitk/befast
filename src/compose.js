@@ -30,7 +30,6 @@ export const dotenv_example = async () => {
   console.log('missing')
   console.log(missing)
 
-  prev = [...split]
   if (missing.length > 0)
     prev = [...prev, `# BeFast added missed variables:`, ...missing]
 
