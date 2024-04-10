@@ -1,6 +1,7 @@
 import { ensureFile, readdir, readFile, writeFile } from 'fs-extra'
 
 import { exec } from './libs/exec'
+import chalk from 'chalk'
 
 export const docker_version = async () => {
   let { stdout } = await exec(`docker version --format json`)
@@ -36,15 +37,18 @@ export const dotenv_example = async () => {
 
 export const docker_compose_up = async (up) => {
   let files = await readdir('compose')
-  console.log(files)
   files = files.filter(
     (file) => file.endsWith('.yml') || file.endsWith('.yaml')
   )
   for (let _file of files) {
-    console.log(_file)
     let file = `compose/${_file}`
     let file_env = `./.env`
-    await docker_compose(file, file_env, up)
+    try {
+      await docker_compose(file, file_env, up)
+    } catch (error) {
+      console.log(chalk.red.bold(`${_file}`))
+      console.log(chalk.red(error.stderr))
+    }
   }
 }
 
@@ -65,11 +69,6 @@ export const docker_network_create = async (name) => {
 
 let default_docker_network = `befast-compose-shared`
 export const docker_compose = async (file, file_env, up = 'up -d --wait') => {
-  console.log({
-    file,
-    file_env,
-    up,
-  })
   await docker_network_create(default_docker_network)
 
   await exec(`docker compose -f ${file} --env-file ${file_env} ${up}`)

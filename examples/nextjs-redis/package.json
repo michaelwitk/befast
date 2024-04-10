@@ -1,7 +1,7 @@
 {
   "name": "nextjs-redis",
   "scripts": {
-    "dev": "next dev",
+    "dev": "befast compose && next dev",
     "build": "next build",
     "start": "next start"
   },
