@@ -19,13 +19,15 @@ export const dotenv_example = async () => {
 
   let dotenv_example = await readFile(`./.env.example`, 'utf8')
   let missing = dotenv_example.split('\n')
-  missing = missing.filter((line) => {
-    const [key] = line.split('=')
-    let found = prev.some((line) => line.startsWith(`${key}=`))
-    if (found) return
+  missing = missing
+    .filter((line) => {
+      const [key] = line.split('=')
+      let found = prev.some((line) => line.startsWith(`${key}=`))
+      if (found) return
 
-    return true
-  })
+      return true
+    })
+    .filter(Boolean)
 
   console.log('missing')
   console.log(missing)
