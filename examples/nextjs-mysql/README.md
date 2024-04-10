@@ -1,6 +1,14 @@
-# nextjs-redis
+# nextjs-mysql
 
-This is a simple example of using Redis with Next.js.
+Minimal example of using MySQL with Next.js.
+
+```
+# schema changes during development
+npm run prisma:db:push
+
+# schema changes for production
+npm run prisma:db:push:prod
+```
 
 ```
 # development

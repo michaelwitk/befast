@@ -1,6 +1,6 @@
-# nextjs-redis
+# nextjs-static
 
-Minimal example of using Redis with Next.js.
+Minimal example of using Next.js static export.
 
 ```
 # development

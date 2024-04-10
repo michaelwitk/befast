@@ -3,7 +3,9 @@
   "scripts": {
     "dev": "befast compose && next dev",
     "build": "prisma generate && next build",
-    "start": "next start"
+    "start": "next start",
+    "prisma:db:push": "prisma format && dotenv -e .env -- prisma db push",
+    "prisma:db:push:prod": "prisma format && dotenv -e .env.production.local -- prisma db push"
   },
   "dependencies": {
     "@prisma/client": "^5.12.1",

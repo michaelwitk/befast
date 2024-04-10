@@ -4,10 +4,10 @@ import { prisma } from '../libs/prisma'
 export default async () => {
   noStore()
 
-  let todos = []
-  // await prisma.todo.findMany({
-  //   orderBy: { createdAt: 'desc' },
-  // })
+  let rows = await prisma.$queryRaw`SELECT COUNT(*) FROM todo`
+  let todos = await prisma.todo.findMany({
+    orderBy: { createdAt: 'desc' },
+  })
 
   return (
     <div>
@@ -17,13 +17,18 @@ export default async () => {
 
           let title = form.get('title')
           let done = form.get('done') === 'on'
-          console.log(title)
-          console.log(done)
+
+          await prisma.todo.create({
+            data: {
+              title,
+              done,
+            },
+          })
 
           revalidatePath('/')
         }}
       >
-        <div style={{ display: 'flex' }}>
+        <div style={{ display: 'flex' }} key={Math.random()}>
           <input type="text" name="title" />
           <label style={{ display: 'flex' }}>
             <input type="checkbox" name="done" />
@@ -33,10 +38,12 @@ export default async () => {
         </div>
       </form>
 
+      <div>todo {JSON.stringify({ rows })}</div>
       {todos.map((todo) => (
-        <div key={todo.id}>
+        <div key={todo.id} style={{ display: 'flex' }}>
+          <div style={{ paddingRight: '5px' }}>{todo.done ? '✅' : 'X'}</div>
+
           <div>{todo.title}</div>
-          <div>{todo.done ? 'done' : 'not done'}</div>
         </div>
       ))}
     </div>

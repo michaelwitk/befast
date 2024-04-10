@@ -29,9 +29,6 @@ export const dotenv_example = async () => {
     })
     .filter(Boolean)
 
-  console.log('missing')
-  console.log(missing)
-
   if (missing.length > 0)
     prev = [...prev, `# BeFast added missed variables:`, ...missing]
 
