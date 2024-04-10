@@ -183,10 +183,12 @@ const main = async () => {
 
     await git_deploy(owner, repo)
 
-    console.log(chalk.gray(`https://github.com/${owner}/${repo}`))
+    let url = `https://github.com/${owner}/${repo}`
+    console.log(chalk.gray(url))
     console.log(chalk.gray(`https://${host}/${repo}`))
     console.log(chalk.gray(`https://${domain}`))
 
+    await open(url)
     process.exit(0)
   }
 }
