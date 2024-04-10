@@ -59,6 +59,7 @@ const main = async () => {
 
   if (command === 'login') {
     let [host, refresh] = command_args
+    host = host.replace(/^https?:\/\//, '')
     let pathname
 
     assert_chalk(
