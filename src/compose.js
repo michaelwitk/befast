@@ -49,6 +49,25 @@ export const docker_compose_up = async (up) => {
       console.log(error)
       console.log(chalk.red.bold(`${_file}`))
       console.log(chalk.red(error.stderr))
+
+      let port_solution = error.stderr.includes(
+        'failed: port is already allocated'
+      )
+      if (port_solution) {
+        console.log()
+        console.log(
+          chalk.gray(
+            'Port already in use. Please shutdown the other process and try again'
+          )
+        )
+        console.log(
+          chalk.gray(
+            `Try to run ${chalk.cyan.bold(
+              'docker ps -a'
+            )} and ${chalk.cyan.bold('docker stop [container_id]')}`
+          )
+        )
+      }
     }
   }
 }
