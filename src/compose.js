@@ -46,6 +46,7 @@ export const docker_compose_up = async (up) => {
     try {
       await docker_compose(file, file_env, up)
     } catch (error) {
+      console.log(error)
       console.log(chalk.red.bold(`${_file}`))
       console.log(chalk.red(error.stderr))
     }
