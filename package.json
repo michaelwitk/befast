@@ -3,7 +3,7 @@
   "version": "0.0.33",
   "description": "The command-line interface for Befa.st",
   "bin": {
-    "bf": "./dist/cli.js",
+    "fast": "./dist/cli.js",
     "befast": "./dist/cli.js"
   },
   "files": [
