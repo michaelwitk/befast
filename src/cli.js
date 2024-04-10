@@ -49,8 +49,11 @@ const main = async () => {
   }
 
   if (command === 'compose') {
+    let [down] = command_args
+    if (down !== 'down') down = undefined
+
     await dotenv_example()
-    await docker_compose_up()
+    await docker_compose_up(down)
     process.exit(0)
   }
 
