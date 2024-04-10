@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-   Next.js on your server. <a href="#how-to-install"><strong>Why?</strong></a>
+   Next.js back end on your server. <a href="#how-to-install"><strong>Why?</strong></a>
 </p>
 
 <p align="center">
@@ -24,20 +24,25 @@
 ```sh
 npm i -g befast       # install cli
 
-befast init EXAMPLE
-cd EXAMPLE
+befast init nextjs-payments
+cd nextjs-payments
 
 befast deploy         # publish
 ```
 
 ## Next.js Examples
 
+- [nextjs-ai](https://github.com/michaelwitk/befast/tree/main/examples/nextjs-ai) - AI, ChatGPT, Image generation
+- [nextjs-cookie](https://github.com/michaelwitk/befast/tree/main/examples/nextjs-auth) - email, socials
+- [nextjs-payments](https://github.com/michaelwitk/befast/tree/main/examples/nextjs-payments) - stripe, lemonsqueezy
 - [nextjs-cron-jobs](https://github.com/michaelwitk/befast/tree/main/examples/nextjs-cron-jobs) - schedule
 - [nextjs-mysql](https://github.com/michaelwitk/befast/tree/main/examples/nextjs-mysql) - database
-- [nextjs-redis](https://github.com/michaelwitk/befast/tree/main/examples/nextjs-redis) - queues, rate limit, ...
-- [nextjs-s3](https://github.com/michaelwitk/befast/tree/main/examples/nextjs-s3) - storage, images, videos, ...
+- [nextjs-redis](https://github.com/michaelwitk/befast/tree/main/examples/nextjs-redis) - queues, rate limit, job processing, ...
+- [nextjs-s3](https://github.com/michaelwitk/befast/tree/main/examples/nextjs-s3) - storage, images, videos,...
 - [nextjs-ws](https://github.com/michaelwitk/befast/tree/main/examples/nextjs-ws) - websocket
 - [nextjs-socket.io](https://github.com/michaelwitk/befast/tree/main/examples/nextjs-socket.io) - websocket w/ cookie
+- [nextjs-static](https://github.com/michaelwitk/befast/tree/main/examples/nextjs-static) - single page app
+- missing something useful? [Request an example anonymously](https://befast.com/feedback)
 
 ## How to Install
 
@@ -60,14 +65,15 @@ A Record    *       1.1.1.1
 
 ## Why?
 
-- Same workflow you already love. Pretty UI, working CLI.
-- No need to sign up on 50 different sites to get your database, queue, rate limiting...
-- No hidden asterik on free\*
-- Drop in replacement. Keep your code as-is.
+- Same workflow. Pretty UI, convenient CLI, git push.
 - No arbitrary limits.
-- Billing without surprises.
-- Any docker service can be defined in code, will be built on deploy.
-- Built-in storage, one-click start.
-- Better performance, data closer to code.
+- No need to sign up on 25 different sites to get your database, job processing, queue, rate limiting...
 - Private.
+- No billing surprises.
+- No hidden asterik on **free\***
+- Drop in replacement. Keep your code as-is. Deploy alongside your existing infrastructure.
+- Better performance, data closer to code.
 - Escape hatch. Have an exit strategy once a company changes pricing on the fly.
+- Built-in storage, one-click start.
+- Any docker compose service can be defined in code, will be built on deploy.
+- Oh, and btw... works with not just Next.js. [Learn more](https://befa.st/npm-run-start)

@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
 import assert from 'assert'
+
+import open from 'open'
 import chalk from 'chalk'
 
 import { config_read, config_write } from './config'
@@ -89,7 +91,10 @@ const main = async () => {
       console.log(chalk.gray(`Your code should read: ${code}`))
       console.log(chalk.gray(`Please visit following page to confirm:`))
       console.log()
-      console.log(chalk.cyan.bold(`${origin}${pathname}`))
+
+      let url = `${origin}${pathname}`
+      console.log(chalk.cyan.bold(url))
+      await open(url)
     }
 
     if (debug) console.log('waiting 5 seconds...')
