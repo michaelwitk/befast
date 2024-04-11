@@ -1,7 +1,7 @@
 # Change email provider
 
 ```
-befast init nextjs-example
+befast init nextjs-emails
 ```
 
 ```
