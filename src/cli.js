@@ -70,6 +70,18 @@ const main = async () => {
     domain = host_trim(domain)
 
     assert_chalk(action === 'add', chalk.red(`Not yet implemented.`))
+    assert_chalk(
+      domain,
+      domain`${chalk.red(`missing domain`)} ${chalk.cyan.bold(
+        `befast domains add [domain] [project]`
+      )}`
+    )
+    assert_chalk(
+      project,
+      `${chalk.red(`missing project`)} ${chalk.cyan.bold(
+        `befast domains add [domain] [project]`
+      )}`
+    )
 
     let origin = `https://${host}`
     let res = await fetch(`${origin}/api/domains`, {
@@ -215,10 +227,12 @@ const main = async () => {
 
     await git_deploy(owner, repo)
 
-    let url = `https://github.com/${owner}/${repo}`
+    let url_github = `https://github.com/${owner}/${repo}`
+    let url = `https://${host}/${repo}`
+    let url_app = `https://${domain}`
+    console.log(chalk.gray(url_github))
     console.log(chalk.gray(url))
-    console.log(chalk.gray(`https://${host}/${repo}`))
-    console.log(chalk.gray(`https://${domain}`))
+    console.log(chalk.gray(url_app))
 
     await open(url)
     process.exit(0)
