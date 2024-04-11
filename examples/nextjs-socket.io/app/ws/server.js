@@ -76,6 +76,7 @@ io.use(async (socket, next) => {
     next(error)
   }
 })
+
 io.on('connection', async (socket) => {
   console.log('user connected')
   console.log(socket.uuid)

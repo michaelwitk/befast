@@ -33,7 +33,7 @@ befast deploy         # publish
 ## Next.js Examples
 
 - [nextjs-ai](https://github.com/michaelwitk/befast/tree/main/examples/nextjs-ai) - AI, ChatGPT, Image generation
-- [nextjs-cookie](https://github.com/michaelwitk/befast/tree/main/examples/nextjs-auth) - email, socials
+- [nextjs-cookie](https://github.com/michaelwitk/befast/tree/main/examples/nextjs-auth) - jwt, email, socials
 - [nextjs-payments](https://github.com/michaelwitk/befast/tree/main/examples/nextjs-payments) - stripe, lemonsqueezy
 - [nextjs-cron-jobs](https://github.com/michaelwitk/befast/tree/main/examples/nextjs-cron-jobs) - schedule
 - [nextjs-mysql](https://github.com/michaelwitk/befast/tree/main/examples/nextjs-mysql) - database

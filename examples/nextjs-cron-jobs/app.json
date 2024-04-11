@@ -1,0 +1,12 @@
+{
+  "cron": [
+    {
+      "command": "npm run start:cron -- /api/console_log?text=called_every_5_minutes",
+      "schedule": "*/5 * * * *"
+    },
+    {
+      "command": "npm run start:cron -- /api/console_log?text=called_every_11_minutes",
+      "schedule": "*/11 * * * *"
+    }
+  ]
+}
