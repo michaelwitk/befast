@@ -1,6 +1,6 @@
 import { headers } from 'next/headers'
 
-export const GET = async (req) => {
+export const POST = async (req) => {
   console.log(await req.json())
   console.log(headers())
 

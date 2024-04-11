@@ -1,3 +1,17 @@
+# Change email provider
+
+```
+befast init nextjs-example
+```
+
+```
+# Development
+npm run dev
+
+# Production
+befast deploy
+```
+
 ## Confirmation Page
 
 - lemonsqueezy

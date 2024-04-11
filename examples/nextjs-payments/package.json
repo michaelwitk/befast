@@ -7,9 +7,11 @@
   },
   "dependencies": {
     "@lemonsqueezy/lemonsqueezy.js": "^2.2.0",
+    "jsonwebtoken": "^9.0.2",
     "next": "^14.1.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "resend": "^3.2.0",
     "stripe": "^15.0.0"
   }
 }
