@@ -28,6 +28,7 @@ befast init nextjs-payments
 cd nextjs-payments
 
 befast deploy         # publish
+# TODO: currently git push required to start build process
 ```
 
 ## Next.js Examples

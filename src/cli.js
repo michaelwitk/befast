@@ -16,6 +16,12 @@ const assert_chalk = (condition, message) => {
   }
 }
 
+let host_trim = (host) => {
+  host = host.replace(/^https?:\/\//, '')
+  host = host.split('/')[0] // trailing
+  return host
+}
+
 const main = async () => {
   let [_node, _path, ...args] = process.argv
 
@@ -59,10 +65,36 @@ const main = async () => {
     process.exit(0)
   }
 
+  if (command === 'domains') {
+    let [action, domain, project] = command_args
+    domain = host_trim(domain)
+
+    assert_chalk(action === 'add', chalk.red(`Not yet implemented.`))
+
+    let origin = `https://${host}`
+    let res = await fetch(`${origin}/api/domains`, {
+      method: 'POST',
+      headers: {
+        'x-apikey': apikey,
+      },
+      body: JSON.stringify({
+        project,
+        domain,
+      }),
+    })
+
+    if (res.ok)
+      console.log(
+        `${chalk.gray.bold(domain)} ${chalk.gray('added successfully.')}`
+      )
+    else console.log(chalk.red('Something went wrong.'))
+
+    process.exit(0)
+  }
   if (command === 'login') {
     let [host, refresh] = command_args
-    host = host.replace(/^https?:\/\//, '')
-    host = host.split('/')[0] // trailing
+    host = host_trim(host)
+
     let pathname
 
     assert_chalk(
