@@ -1,6 +1,6 @@
 {
   "name": "befast",
-  "version": "0.0.45",
+  "version": "0.0.46",
   "description": "The command-line interface for Befa.st",
   "bin": {
     "fast": "./dist/cli.js",
