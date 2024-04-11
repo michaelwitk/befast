@@ -40,7 +40,6 @@ befast deploy         # publish
 - [nextjs-mysql](https://github.com/michaelwitk/befast/tree/main/examples/nextjs-mysql) - database
 - [nextjs-redis](https://github.com/michaelwitk/befast/tree/main/examples/nextjs-redis) - queues, rate limit, job processing, ...
 - [nextjs-s3](https://github.com/michaelwitk/befast/tree/main/examples/nextjs-s3) - storage, images, videos,...
-- [nextjs-ws](https://github.com/michaelwitk/befast/tree/main/examples/nextjs-ws) - websocket
 - [nextjs-socket.io](https://github.com/michaelwitk/befast/tree/main/examples/nextjs-socket.io) - websocket w/ cookie
 - [nextjs-static](https://github.com/michaelwitk/befast/tree/main/examples/nextjs-static) - single page app
 - missing something useful? [Request an example anonymously](https://befast.com/feedback)
