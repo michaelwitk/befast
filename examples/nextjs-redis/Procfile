@@ -1,2 +1,2 @@
 web: npm run start
-jobs: npm run start:queues
+queues: npm run start:queues
