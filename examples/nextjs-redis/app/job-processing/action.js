@@ -1,6 +1,7 @@
 'use server'
 
 import { headers } from 'next/headers'
+import { redirect } from 'next/navigation'
 
 import { limit_jobs } from '../../libs/limiter'
 import { queue } from '../../libs/queue'
@@ -24,5 +25,5 @@ export const action = async (text) => {
 
   await queue('fifo', { text })
 
-  return { error: null }
+  redirect('/job-processing/status')
 }
