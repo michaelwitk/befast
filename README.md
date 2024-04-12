@@ -33,15 +33,16 @@ befast deploy         # publish
 
 ## Next.js Examples
 
-- [nextjs-ai](https://github.com/michaelwitk/befast/tree/main/examples/nextjs-ai) - AI, ChatGPT, Image generation
-- [nextjs-cookie](https://github.com/michaelwitk/befast/tree/main/examples/nextjs-auth) - jwt, email, socials
 - [nextjs-payments](https://github.com/michaelwitk/befast/tree/main/examples/nextjs-payments) - stripe, lemonsqueezy
+- [nextjs-ai](https://github.com/michaelwitk/befast/tree/main/examples/nextjs-ai) - AI, ChatGPT, Image generation
+- [nextjs-redis](https://github.com/michaelwitk/befast/tree/main/examples/nextjs-redis) - queues, rate limit, job processing, ...
 - [nextjs-cron-jobs](https://github.com/michaelwitk/befast/tree/main/examples/nextjs-cron-jobs) - schedule
 - [nextjs-mysql](https://github.com/michaelwitk/befast/tree/main/examples/nextjs-mysql) - database
-- [nextjs-redis](https://github.com/michaelwitk/befast/tree/main/examples/nextjs-redis) - queues, rate limit, job processing, ...
 - [nextjs-s3](https://github.com/michaelwitk/befast/tree/main/examples/nextjs-s3) - storage, images, videos,...
 - [nextjs-socket.io](https://github.com/michaelwitk/befast/tree/main/examples/nextjs-socket.io) - websocket w/ cookie
-- [nextjs-static](https://github.com/michaelwitk/befast/tree/main/examples/nextjs-static) - single page app
+- [nextjs-static](https://github.com/michaelwitk/befast/tree/main/examples/nextjs-static) - static site or Single-Page Application (SPA)
+- [nextjs-cookie](https://github.com/michaelwitk/befast/tree/main/examples/nextjs-auth) - jwt, email, socials
+- [static](https://github.com/michaelwitk/befast/tree/main/examples/static) - index.html
 - missing something useful? [Request an example anonymously](https://befast.com/feedback)
 
 ## How to Install
