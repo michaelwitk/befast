@@ -138,7 +138,11 @@ const main = async () => {
 
       let url = `${origin}${pathname}`
       console.log(chalk.cyan.bold(url))
-      await open(url)
+      try {
+        await open(url)
+      } catch (error) {
+        //
+      }
     }
 
     if (debug) console.log('waiting 5 seconds...')
@@ -234,7 +238,11 @@ const main = async () => {
     console.log(chalk.gray(url))
     console.log(chalk.gray(url_app))
 
-    await open(url)
+    try {
+      await open(url)
+    } catch (error) {
+      //
+    }
     process.exit(0)
   }
 }
